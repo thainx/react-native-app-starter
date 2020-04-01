@@ -8,10 +8,18 @@
 
 import 'react-native-gesture-handler'
 import React from 'react'
-import MainNavigator from './navigation/Main'
+import { Provider } from 'react-redux'
+import MainNavigator from './routes'
+import configureStore from './store'
+
+const store = configureStore()
 
 const App: () => React$Node = () => {
-  return <MainNavigator />
+  return (
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
+  )
 }
 
 export default App

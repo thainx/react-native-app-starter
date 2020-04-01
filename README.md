@@ -1,4 +1,4 @@
-# One on One E-learning Mobile App
+# React Native app starter
 ## Prerequisites
 Before you start, you should have these tools installed:
 * Yarn
