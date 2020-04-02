@@ -1,22 +1,49 @@
-import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import React, { useEffect } from 'react'
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+} from 'react-native'
 import { connect } from 'react-redux'
-import Text from 'theme/components/Text'
-import { getHomeExamples } from '../../../example/selectors'
+import { selectExamples } from '../../../example/example-selectors'
+import Example from '../../../example/Example'
+import { getExamples } from '../../../example/example-actions'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  form: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textInput: {
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
   },
 })
 
-const Home = ({ examples }) => {
+const HomeScreen = ({ examples, getHomeExamples }) => {
+  useEffect(() => {
+    getHomeExamples()
+  }, [getHomeExamples])
   return (
     <View style={styles.container}>
+      <View style={styles.form}>
+        <TextInput placeholder="Enter example text" style={styles.textInput} />
+        <TouchableOpacity>
+          <Text>Submit</Text>
+        </TouchableOpacity>
+      </View>
       {examples.map((e) => (
-        <Text key={e.id}>{e.text}</Text>
+        <Example key={e.id} text={e.text} />
       ))}
     </View>
   )
@@ -24,8 +51,14 @@ const Home = ({ examples }) => {
 
 const mapStateToProps = (state) => {
   return {
-    examples: getHomeExamples(state),
+    examples: selectExamples('homeExamples')(state),
   }
 }
 
-export default connect(mapStateToProps)(Home)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getHomeExamples: () => dispatch(getExamples({ key: 'homeExamples' })),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
