@@ -6,11 +6,7 @@ Before you start, you should have these tools installed:
   * Bundler (`gem install bundler`)
 
 ## Getting started
-First, use the following command to change your project name:
-```
-yarn rename <YOUR_APP_NAME>
-```
-Then, install Bundler dependencies:
+First, install Bundler dependencies:
 ```
 bundle install
 ```
@@ -18,7 +14,14 @@ After that, install yarn packages:
 ```
 yarn install
 ```
-This will also install Pod dependencies needed for iOS app.
+Then, use this following command to change the name of the project:
+```
+yarn rename <YOUR_APP_NAME>
+```
+Finally, go to `ios/` folder and install Pod dependencies for the iOS app:
+```
+bundle exec pod install
+```
 
 ## Directory structure
 `src/` is the main folder to store all of the source code. It includes these sub-folders:
