@@ -1,4 +1,4 @@
-import { ADD_EXAMPLE } from './example-action-types'
+import { SET_EXAMPLES, ADD_EXAMPLES } from './example-action-types'
 
 const initialState = {
   byId: {}, // this is to cache all data record
@@ -8,9 +8,8 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  console.log('action', action.payload)
   switch (action.type) {
-    case ADD_EXAMPLE:
+    case SET_EXAMPLES: {
       const {
         payload: { key, data },
       } = action
@@ -20,8 +19,22 @@ export default (state = initialState, action) => {
           ...state.byId,
           ...data.entities.examples,
         },
-        [key]: [...state[key], ...data.result],
+        [key]: data.result,
       }
+    }
+    case ADD_EXAMPLES: {
+      const {
+        payload: { key, data },
+      } = action
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          ...data.entities.examples,
+        },
+        [key]: [...state[key], data.result],
+      }
+    }
     default:
       return state
   }

@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react'
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-} from 'react-native'
+import React, { useEffect, useCallback } from 'react'
+import { View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { selectExamples } from '../../../example/example-selectors'
 import Example from '../../../example/Example'
-import { getExamples } from '../../../example/example-actions'
+import { getExamples, insertExample } from '../../../example/example-actions'
+import AddExampleForm from '../../container/AddExampleForm'
 
 const styles = StyleSheet.create({
   container: {
@@ -17,31 +12,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
-  form: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  textInput: {
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-  },
 })
 
-const HomeScreen = ({ examples, getHomeExamples }) => {
+const key = 'homeExamples'
+
+const HomeScreen = ({ examples, getHomeExamples, insertHomeExamples }) => {
   useEffect(() => {
     getHomeExamples()
   }, [getHomeExamples])
+  const submitExample = useCallback(
+    (example) => {
+      insertHomeExamples(example)
+    },
+    [insertHomeExamples],
+  )
   return (
     <View style={styles.container}>
-      <View style={styles.form}>
-        <TextInput placeholder="Enter example text" style={styles.textInput} />
-        <TouchableOpacity>
-          <Text>Submit</Text>
-        </TouchableOpacity>
-      </View>
+      <AddExampleForm onSubmit={submitExample} />
       {examples.map((e) => (
         <Example key={e.id} text={e.text} />
       ))}
@@ -51,13 +38,14 @@ const HomeScreen = ({ examples, getHomeExamples }) => {
 
 const mapStateToProps = (state) => {
   return {
-    examples: selectExamples('homeExamples')(state),
+    examples: selectExamples(key)(state),
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getHomeExamples: () => dispatch(getExamples({ key: 'homeExamples' })),
+    getHomeExamples: () => dispatch(getExamples({ key })),
+    insertHomeExamples: (data) => dispatch(insertExample({ key, data })),
   }
 }
 
