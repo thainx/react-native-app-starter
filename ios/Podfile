@@ -21,8 +21,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'OneononeElearningMobile' do
-  # Pods for OneononeElearningMobile
+target 'RNStarter' do
+  # Pods for RNStarter
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -54,7 +54,7 @@ target 'OneononeElearningMobile' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'OneononeElearningMobileTests' do
+  target 'RNStarterTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -71,10 +71,10 @@ target 'OneononeElearningMobile' do
   end
 end
 
-target 'OneononeElearningMobile-tvOS' do
-  # Pods for OneononeElearningMobile-tvOS
+target 'RNStarter-tvOS' do
+  # Pods for RNStarter-tvOS
 
-  target 'OneononeElearningMobile-tvOSTests' do
+  target 'RNStarter-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

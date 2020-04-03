@@ -1,5 +1,5 @@
 {
-  "name": "oneonone-elearning-mobile",
+  "name": "react-native-app-starter",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "postinstall": "cd ios/ && bundle exec pod install && cd ../"
+    "postinstall": "cd ios/ && bundle exec pod install && cd ../",
+    "rename": "react-native-rename"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
@@ -41,6 +42,7 @@
     "jest": "^25.2.4",
     "lint-staged": "^10.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-rename": "^2.4.1",
     "react-test-renderer": "16.11.0"
   },
   "jest": {
