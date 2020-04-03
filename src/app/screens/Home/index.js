@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { selectExamples } from '../../../example/example-selectors'
 import Example from '../../../example/Example'
 import { getExamples, insertExample } from '../../../example/example-actions'
-import AddExampleForm from '../../container/AddExampleForm'
+import AddExampleForm from '../../containers/AddExampleForm'
 
 const styles = StyleSheet.create({
   container: {

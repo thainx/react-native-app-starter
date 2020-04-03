@@ -1,9 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { normalize } from 'normalizr'
+import { schema, normalize } from 'normalizr'
 import exampleService from './example-service'
 import { setExamples, addExamples } from './example-actions'
 import { GET_EXAMPLES, INSERT_EXAMPLE } from './example-action-types'
-import ExampleSchema from './example-schema'
+
+const ExampleSchema = new schema.Entity('examples')
 
 function* getExamples({ payload: { key } }) {
   const examples = yield call(exampleService.getExamples)
