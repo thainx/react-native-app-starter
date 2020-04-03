@@ -1,9 +1,23 @@
-import { GET_EXAMPLES, ADD_EXAMPLE } from './example-action-types'
+import {
+  GET_EXAMPLES,
+  INSERT_EXAMPLE,
+  SET_EXAMPLES,
+  ADD_EXAMPLES,
+} from './example-action-types'
 
 // reducer actions
-const addExample = ({ key, data }) => {
+const setExamples = ({ key, data }) => {
   return {
-    type: ADD_EXAMPLE,
+    type: SET_EXAMPLES,
+    payload: {
+      key,
+      data,
+    },
+  }
+}
+const addExamples = ({ key, data }) => {
+  return {
+    type: ADD_EXAMPLES,
     payload: {
       key,
       data,
@@ -20,5 +34,11 @@ const getExamples = ({ key }) => {
     },
   }
 }
+const insertExample = ({ key, data }) => {
+  return {
+    type: INSERT_EXAMPLE,
+    payload: { key, data },
+  }
+}
 
-export { addExample, getExamples }
+export { setExamples, addExamples, getExamples, insertExample }
