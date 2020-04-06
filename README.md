@@ -23,6 +23,8 @@ Finally, go to `ios/` folder and install Pod dependencies for the iOS app:
 bundle exec pod install
 ```
 
+For setting up environment variables, you can take a look at [this link](https://github.com/luggit/react-native-config/tree/v1.0.0) (Note that at the moment, the file name `.env` cannot be read on iOS app. It may be a bug from the package, so avoid this name for now)
+
 ## Directory structure
 `src/` is the main folder to store all of the source code. It includes these sub-folders:
 * `app/`: the main module of the project, consisting of common features such as: 
