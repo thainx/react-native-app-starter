@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import { connect } from 'react-redux'
+import Config from 'react-native-config'
 import { selectExamples } from '../../../example/example-selectors'
 import Example from '../../../example/Example'
 import { getExamples, insertExample } from '../../../example/example-actions'
@@ -28,6 +29,7 @@ const HomeScreen = ({ examples, getHomeExamples, insertHomeExamples }) => {
   )
   return (
     <View style={styles.container}>
+      <Text>Enviroment: {Config.APP_ENV}</Text>
       <AddExampleForm onSubmit={submitExample} />
       {examples.map((e) => (
         <Example key={e.id} text={e.text} />
