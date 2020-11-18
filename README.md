@@ -43,4 +43,4 @@ This boilerplate includes some common libraries which are praised by communities
 * Redux Saga to handle asynchoronous actions
 * styled-components to customize the UI
 * Formik to handle forms' state
-* Ramda for utility functions
+* Lodash for utility functions
