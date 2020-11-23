@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Pressable } from 'react-native'
 import { connect } from 'react-redux'
 import Config from 'react-native-config'
 import { selectExamples } from '../../../example/example-selectors'
@@ -17,7 +17,12 @@ const styles = StyleSheet.create({
 
 const key = 'homeExamples'
 
-const HomeScreen = ({ examples, getHomeExamples, insertHomeExamples }) => {
+const HomeScreen = ({
+  examples,
+  getHomeExamples,
+  insertHomeExamples,
+  navigation,
+}) => {
   useEffect(() => {
     getHomeExamples()
   }, [getHomeExamples])
@@ -27,9 +32,15 @@ const HomeScreen = ({ examples, getHomeExamples, insertHomeExamples }) => {
     },
     [insertHomeExamples],
   )
+  const goToPage = useCallback(() => {
+    navigation.navigate('Page')
+  }, [navigation])
   return (
     <View style={styles.container}>
       <Text>Enviroment: {Config.APP_ENV}</Text>
+      <Pressable onPress={goToPage}>
+        <Text>Go to Page</Text>
+      </Pressable>
       <AddExampleForm onSubmit={submitExample} />
       {examples.map((e) => (
         <Example key={e.id} text={e.text} />

@@ -8,3 +8,6 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+# TODO: com.mypackage should match the package value in your app/src/main/AndroidManifest.xml file
+-keep class com.mypackage.BuildConfig { *; }
