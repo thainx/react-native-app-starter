@@ -14,14 +14,12 @@ After that, install yarn packages:
 ```
 yarn install
 ```
-Then, use this following command to change the name of the project:
-```
-yarn rename <YOUR_APP_NAME>
-```
 Finally, go to `ios/` folder and install Pod dependencies for the iOS app:
 ```
 bundle exec pod install
 ```
+
+Note: you should remember to rename your project.
 
 For setting up environment variables, you can take a look at [this link](https://github.com/luggit/react-native-config/tree/v1.0.0) (Note that at the moment, the file name `.env` cannot be read on iOS app. It may be a bug from the package, so avoid this name for now)
 
