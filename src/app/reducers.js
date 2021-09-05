@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import exampleReducer from '../example/example-reducer'
+
+const emptyReducers = (state = {}) => state
 
 const rootReducer = combineReducers({
-  example: exampleReducer,
+  empty: emptyReducers,
+  // TODO: add your custom reducers
 })
 
 export default rootReducer
